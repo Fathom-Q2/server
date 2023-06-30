@@ -1,9 +1,6 @@
 
 # WalletMetrics : Google Analytics for DApps
 
-![](https://github.com/Fantosi/walletmetrics-server/assets/75651834/23e99f78-73b6-4b12-be47-eb3d96911ef7)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/your-username/walletmetrics/blob/main/LICENSE) [![GitHub Issues](https://img.shields.io/github/issues/Fantosi/walletmetrics-server.svg)](https://github.com/your-username/walletmetrics/issues) [![GitHub Stars](https://img.shields.io/github/stars/Fantosi/walletmetrics-server.svg)](https://github.com/your-username/walletmetrics/stargazers)
-
 WalletMetrics provides code-free user analytics for DApps, aiming to simplify on-chain analysis, track behavior, optimize projects, and enable informed decisions. It uncovers trends, seizes opportunities, and maximizes Web3 returns effortlessly.
 
 ## Overview
