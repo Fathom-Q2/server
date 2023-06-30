@@ -7,13 +7,14 @@ export default () =>
   ({
     postgres: {
       type: "postgres",
-      host: process.env.DB_HOST,
-      port: Number(process.env.DB_PORT),
-      username: process.env.DB_USER,
-      password: process.env.DB_PASS,
-      database: process.env.DB_NAME,
+      host: 'localhost',//process.env.DB_HOST,
+      port: 5432, //Number(process.env.DB_PORT),
+      username: "postgres",//process.env.DB_USER,
+      password: "Amavina1",//process.env.DB_PASS,
+      database: "block_metrics",//process.env.DB_NAME,
       entities: [Protocol, Transaction, Wallet],
       migrations: [__dirname + "/../database/migrations/*.{js,ts}"],
       logging: process.env.NODE_ENV === "local",
+      synchronize: true,
     },
   } as { postgres: DataSourceOptions });
