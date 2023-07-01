@@ -19,7 +19,7 @@ export class ProtocolService {
   async getProtocolTransactions(protocolAddress: string): Promise<Transaction[]> {
     const protocol = await this.protocolRepository.findOneBy({ protocolAddress });
     if (!protocol) {
-      // 프로토콜을 찾을 수 없을 경우 예외 처리
+      
       throw new Error(`Protocol with address ${protocolAddress} not found.`);
     }
     return this.transactionRepository.findBy({ protocolId: protocol.id });
@@ -28,7 +28,7 @@ export class ProtocolService {
   async getProtocolWallets(protocolAddress: string): Promise<Wallet[]> {
     const protocol = await this.protocolRepository.findOneBy({ protocolAddress });
     if (!protocol) {
-      // 프로토콜을 찾을 수 없을 경우 예외 처리
+      
       throw new Error(`Protocol with address ${protocolAddress} not found.`);
     }
     const wallets = await this.walletRepository

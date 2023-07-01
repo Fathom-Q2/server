@@ -37,10 +37,10 @@ export class FTMscanApiService {
     const lowerCasedProtocolAddress = protocolAddress.toLowerCase();
     let result = false;
 
-    // protocol address가 존재하는지 확인
+    // protocol address
     const protocol = await this.protocolRepository.findOne({ where: { protocolAddress: lowerCasedProtocolAddress } });
     if (protocol !== null) {
-      // tx 가 존재하는지 확인
+      // tx 
       const txs = await this.transactionRepository.find({
         where: { protocolId: protocol.id },
       });
@@ -87,7 +87,7 @@ export class FTMscanApiService {
 
       const transaction = await this.transactionRepository.findOne({ where: { hash } });
 
-      // functionName에서 ()찾아서 앞에 있는 문자열을 eventName으로 저장
+      // functionName
       let eventName = functionName;
       const functionNameIndex = functionName.indexOf("(");
       if (functionNameIndex !== -1) eventName = functionName.substring(0, functionNameIndex);
@@ -181,7 +181,7 @@ export class FTMscanApiService {
         return true;
       }
 
-      // protocol에서 tx 가져와서 오고 startblock 바꿔주면서 while loop 돌리기
+      // protocol
 
       while (true) {
         const protocol = await this.protocolRepository.findOne({
@@ -196,7 +196,7 @@ export class FTMscanApiService {
           });
           savedLastBlockNumber = transactions[0].blockNumber;
         } else {
-          /* TODO: FTMscan API에서 protocolAddress로 콜을 날려서 startBlock을 가져오도록 수정 */
+         
           savedLastBlockNumber = 0;
         }
 
