@@ -1,5 +1,5 @@
 import { Injectable } from "@nestjs/common";
-import { EtherscanApiService } from "./external-api/etherscan/etherscan-api.service";
+import { FTMscanApiService } from "./external-api/ftmscan/ftmscan-api.service";
 import {
   GetBriefRes,
   StartTimestamps,

@@ -1,11 +1,11 @@
 import { Body, Controller, Get, Header, Post, Query } from "@nestjs/common";
 import { AppService } from "./app.service";
-import { EtherscanApiService } from "./external-api/etherscan/etherscan-api.service";
+import { FTMscanApiService } from "./external-api/ftmscan/ftmscan-api.service";
 import { GetBriefRes } from "./app.dtos";
 
 @Controller()
 export class AppController {
-  constructor(private readonly _appService: AppService, private readonly _etherscanApiService: EtherscanApiService) {}
+  constructor(private readonly _appService: AppService, private readonly _etherscanApiService: FTMscanApiService) {}
 
   @Get("isinit")
   async checkIsInit(@Query("protocolAddress") protocolAddress: string): Promise<boolean> {

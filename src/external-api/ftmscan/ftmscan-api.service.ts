@@ -1,5 +1,5 @@
 import { ConsoleLogger, Injectable } from "@nestjs/common";
-import { EtherscanApiResponse, EtherScanResponse, TransactionDto, EtherScanTxListRequest } from "./etherscan-api.dtos";
+import { FTMscanApiResponse, FTMscanResponse, TransactionDto, FTMscanTxListRequest } from "./ftmscan-api.dtos";
 import { HttpService } from "@nestjs/axios";
 import { ConfigService } from "@nestjs/config";
 import { catchError, firstValueFrom } from "rxjs";
@@ -11,9 +11,9 @@ import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
 
 @Injectable()
-export class EtherscanApiService {
-  baseUrl = this.configService.get<string>("EtherscanApi.url");
-  apiKey = this.configService.get<string>("EtherscanApi.apiKey");
+export class FTMscanApiService {
+  baseUrl = this.configService.get<string>("FTMscanApi.url");
+  apiKey = this.configService.get<string>("FTMscanApi.apiKey");
 
   constructor(
     private httpService: HttpService,
@@ -41,7 +41,7 @@ export class EtherscanApiService {
     const protocol = await this.protocolRepository.findOne({ where: { protocolAddress: lowerCasedProtocolAddress } });
     if (protocol !== null) {
       // tx 가 존재하는지 확인
-      const txs = await await this.transactionRepository.find({
+      const txs = await this.transactionRepository.find({
         where: { protocolId: protocol.id },
       });
       if (txs !== null && txs.length > 0) {
@@ -132,7 +132,7 @@ export class EtherscanApiService {
       }
 
       const savedLastBlockNumber = transactions[0].blockNumber;
-      const lastBlockNumber = await this._getLastBlockNumberFromEtherscan(
+      const lastBlockNumber = await this._getLastBlockNumberFromFTMscan(
         protocolAddress,
         savedLastBlockNumber.toString(),
       );
@@ -152,8 +152,8 @@ export class EtherscanApiService {
     }
   }
 
-  private async _getLastBlockNumberFromEtherscan(protocolAddress: string, savedBlockNumber: string): Promise<number> {
-    const request: EtherScanTxListRequest = {
+  private async _getLastBlockNumberFromFTMscan(protocolAddress: string, savedBlockNumber: string): Promise<number> {
+    const request: FTMscanTxListRequest = {
       address: protocolAddress,
       startblock: savedBlockNumber,
       endblock: "99999999",
@@ -165,7 +165,7 @@ export class EtherscanApiService {
 
     const url = `${this.baseUrl}&address=${request.address}&startblock=${request.startblock}&endblock=${request.endblock}&page=${request.page}&offset=${request.offset}&sort=${request.sort}&apikey=${request.apikey}`;
 
-    const { data } = await firstValueFrom(this.httpService.get<EtherScanResponse>(url).pipe());
+    const { data } = await firstValueFrom(this.httpService.get<FTMscanResponse>(url).pipe());
 
     if (data.status === "1") {
       return Number(data.result[0].blockNumber);
@@ -196,11 +196,11 @@ export class EtherscanApiService {
           });
           savedLastBlockNumber = transactions[0].blockNumber;
         } else {
-          /* TODO: etherscan API에서 protocolAddress로 콜을 날려서 startBlock을 가져오도록 수정 */
+          /* TODO: FTMscan API에서 protocolAddress로 콜을 날려서 startBlock을 가져오도록 수정 */
           savedLastBlockNumber = 0;
         }
 
-        const request: EtherScanTxListRequest = {
+        const request: FTMscanTxListRequest = {
           address: lowerCasedProtocolAddress,
           startblock: savedLastBlockNumber.toString(),
           endblock: "99999999",
@@ -212,7 +212,7 @@ export class EtherscanApiService {
 
         const url = `${this.baseUrl}&address=${request.address}&startblock=${request.startblock}&endblock=${request.endblock}&page=${request.page}&offset=${request.offset}&sort=${request.sort}&apikey=${request.apikey}`;
 
-        const { data } = await firstValueFrom(this.httpService.get<EtherScanResponse>(url).pipe());
+        const { data } = await firstValueFrom(this.httpService.get<FTMscanResponse>(url).pipe());
 
         if (data.status === "1") {
           for (const tx of data.result) {
@@ -223,7 +223,7 @@ export class EtherscanApiService {
             break;
           }
         } else {
-          throw Error(`Etherscan API Error: status code: ${data.status}`);
+          throw Error(`FTMscan API Error: status code: ${data.status}`);
         }
       }
     } catch (error) {

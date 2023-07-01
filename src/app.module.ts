@@ -6,8 +6,8 @@ import * as path from "path";
 import { ThrottlerModule } from "@nestjs/throttler";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import postgresConfig from "./common/config/postgres.config";
-import { EtherscanApiModule } from "./external-api/etherscan/etherscan-api.module";
-import etherscanApiConfig from "./common/config/etherscan.api.config";
+import { FTMscanApiModule } from "./external-api/ftmscan/ftmscan-api.module";
+import etherscanApiConfig from "./common/config/ftmscan.api.config";
 import { WalletService } from "./wallet/wallet.service";
 import { Transaction } from "@common/database/entities/transaction.entity";
 import { Wallet } from "@common/database/entities/wallet.entity";
@@ -31,7 +31,7 @@ import { TransactionService } from "./transaction/transaction.service";
       ...postgresConfig().postgres,
     }),
     TypeOrmModule.forFeature([Transaction, Wallet, Protocol]),
-    EtherscanApiModule,
+    FTMscanApiModule,
     TransactionModule,
   ],
   controllers: [AppController],

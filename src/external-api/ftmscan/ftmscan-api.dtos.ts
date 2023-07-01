@@ -1,9 +1,9 @@
-export class EtherscanApiResponse {
+export class FTMscanApiResponse {
   status: any;
-  data: EtherScanResponse;
+  data: FTMscanResponse;
 }
 
-export type EtherScanResponse = {
+export type FTMscanResponse = {
   status: string;
   message: string;
   result: TransactionDto[];
@@ -30,7 +30,7 @@ export class TransactionDto {
   functionName: string;
 }
 
-export type EtherScanTxListRequest = {
+export type FTMscanTxListRequest = {
   address: string;
   startblock: string;
   endblock: string;

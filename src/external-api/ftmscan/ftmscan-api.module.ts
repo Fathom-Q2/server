@@ -1,30 +1,30 @@
 import { Module } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 
-import { EtherscanApiService } from "./etherscan-api.service";
+import { FTMscanApiService } from "./ftmscan-api.service";
 
 import { HttpModule } from "@nestjs/axios";
-import { EtherscanApiConfig } from "../../common/config/etherscan.api.config";
+import { FTMscanApiConfig } from "../../common/config/ftmscan.api.config";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { Transaction } from "../../common/database/entities/transaction.entity";
 import { Wallet } from "../../common/database/entities/wallet.entity";
 import { Protocol } from "../../common/database/entities/protocol.entity";
 
 @Module({
-  imports: [
+  imports: [ 
     HttpModule.registerAsync({
       useFactory: async (c: ConfigService) => ({
-        baseURL: `${c.get<EtherscanApiConfig>("EtherscanApi").url}`,
+        baseURL: `${c.get<FTMscanApiConfig>("FTMscanApi").url}`,
       }),
       inject: [ConfigService],
     }),
     TypeOrmModule.forFeature([Transaction, Wallet, Protocol]),
   ],
-  providers: [EtherscanApiService],
-  exports: [EtherscanApiService],
+  providers: [FTMscanApiService],
+  exports: [FTMscanApiService],
 })
-export class EtherscanApiModule {
-  constructor(private etherscanApiService: EtherscanApiService) {
-    // this.etherscanApiService.getTxList();
+export class FTMscanApiModule {
+  constructor(private FTMscanApiService: FTMscanApiService) {
+    // this.FTMscanApiService.getTxList();
   }
 }
