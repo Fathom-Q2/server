@@ -11,4 +11,4 @@ export default () =>
     }, 
   } as { FTMscanApi: FTMscanApiConfig });
 
-  //"https://api.ftmscan.com/"
+
