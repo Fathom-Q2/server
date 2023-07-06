@@ -1,59 +1,52 @@
+## Inspiration
+Wallet metrics is inspired by the lack of any user-centric Fantom analytics platform that is free and open for anyone to access analytics with ease
 
-# WalletMetrics : Google Analytics for DApps
+## What it does
+WalletMetrics sets itself apart by adopting a user-centric approach to analytics. Unlike traditional blockchain analytics services, WalletMetrics focuses on understanding user behavior, preferences, and trends. The platform provides valuable insights into user interactions, purchasing patterns, and wallet activities. Key features of WalletMetrics include user segmentation, transaction-specific analysis, conversion rate tracking, and user journey visualization. By leveraging these features, users can make data-driven decisions and optimize crypto decisions.
 
-WalletMetrics provides code-free user analytics for DApps, aiming to simplify on-chain analysis, track behavior, optimize projects, and enable informed decisions. It uncovers trends, seizes opportunities, and maximizes Web3 returns effortlessly.
+## How we built it
+WalletMetrics operates as a Fantom analytics tool, it integrates with the fantom scan api to pull, analyze and provides valuable insights into user interactions, transaction trends, and wallet activities and other relevant analytics. WalletMetrics stands out by adopting a user-centric approach to analytics. Our platform is seeks to make analytics available for everyone both technical and non-technical users. making it easy for anyone to make data-driven decisions.
 
-## Overview
+## Challenges we ran into
+While developing WalletMetrics, we encountered several challenges. These challenges included:
 
-While Web2 user analytics platforms like Google Analytics and Amplitude only provide user statistics to their service providers, WalletMetrics offers user analytics information to everyone by simply clicking on a protocol or entering an address. WalletMetrics aims to be a service that provides value not only to service builders but also to all members of the Ethereum ecosystem through this openness.
+- Data collection: Ensuring accurate and comprehensive data collection from blockchain transactions and interactions.
+- Privacy and security: Addressing privacy concerns and implementing robust security measures to protect user data while ensuring transparency.
+- Data visualization: Creating intuitive and informative visualizations and dashboards to present complex analytics data in a user-friendly manner.
+- Scalability: Designing the platform to handle large volumes of data and accommodate future growth.
 
-## Technologies Used
+## Accomplishments that we're proud of
+Throughout the development process, we achieved several notable accomplishments:
 
-This project leverages several technologies including:
+- User-centric approach: Successfully adopting a user-centric approach to blockchain analytics, focusing on understanding user behavior and preferences.
+- Valuable insights: Providing stakeholders with valuable insights into user interactions, purchasing patterns, and conversion rates.
+- Democratization of data: Enabling broader access to analytics data for non-technical roles, fostering inclusivity and collaboration within the blockchain community.
+- Transparency and trust: Leveraging blockchain technology to ensure transparency and enhance trust among participants.
+Public smart contract support: Supporting public smart contract projects, allowing users to explore user data and service trends.
 
-- Javascript
-- Typescript
-- React.js
-- Nest.js
-- GnosisScan
-- PostgreSQL
-- Docker
+## What we learned
+The development of WalletMetrics was a valuable learning experience. Some key takeaways include:
 
-## Getting Started
+- Importance of user-centric analytics: Recognizing the significance of focusing on user behavior and preferences in the blockchain market.
+- Challenges of blockchain data analysis: Gaining insights into the unique challenges and considerations involved in analyzing blockchain data.
+- Privacy and security in blockchain analytics: Understanding the complexities of addressing privacy concerns while maintaining transparency and accessibility.
+- Visualization techniques: Exploring effective ways to present complex analytics data in an intuitive and user-friendly manner.
 
-### Prerequisites
+## What's next for WalletMetrics
+Looking ahead, we have several plans for the future of WalletMetrics:
 
-To run Walletmetrics, you need to have the following installed:
+- Continuous improvement : Iterating on the platform to enhance data collection, analytics capabilities, and user experience based on user feedback and evolving market needs.
+- Advanced analytics features: Introducing advanced analytics features to uncover deeper insights.
+- Integration with external tools: Exploring integration possibilities with external analytics tools and platforms to expand analytical capabilities and provide additional value to users.
+- Enhanced privacy and compliance: Strengthening privacy measures and ensuring compliance with relevant regulations to protect user data and maintain trust.
+- Mobile Version: launching on mobile to bring the power and benefit of our platform into the hands of greater audience.
 
-- Node.js (version >= 12.0.0)
-- PostgreSQL (version >= 13.0)
 
-### Installation
-
-1. Clone the repository:
-
-```bash
-git clone https://github.com/your-username/walletmetrics-server.git
-```
-
-2. Install the dependencies:
-```bash
-cd walletmetrics
-npm install
-```
-3.  Set up the configuration file:
-```bash
-cp .env.example .env
-```
-Edit the `.env` file and provide the necessary configurations.
-
-4.  Start the application:
-```bash
-npm run start
-```
-
-## Acknowledgements
-
--   This project was inspired by the need for on-chain user analytics in the Web3 ecosystem.
--   We would like to thank the open-source community for their contributions.
--   This README file was updated by GPT-4.
+## Built With
+- Fantom Scan api
+- docker
+- fantomscan
+- nestjs
+- postgressql
+- react
+- typescript
