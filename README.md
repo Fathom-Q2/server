@@ -50,3 +50,23 @@ Looking ahead, we have several plans for the future of WalletMetrics:
 - postgressql
 - react
 - typescript
+
+## Getting Started
+Prerequisites
+To run Walletmetrics, you need to have the following installed:
+
+- Node.js (version >= 12.0.0)
+- PostgreSQL (version >= 13.0)
+
+## Installation
+
+- Clone the repository:
+- Install the dependencies:
+- cd walletmetrics
+- npm install
+- Set up the configuration file:
+- cp .env.example .env
+- Edit the .env file and provide the necessary configurations.
+
+## Start the application:
+npm run start
